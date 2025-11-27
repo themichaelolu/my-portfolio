@@ -1,4 +1,10 @@
 import React from "react";
+import flutterLogo from "./assets/flutter.svg";
+import dartLogo from "./assets/dart.svg";
+import firebaseLogo from "./assets/firebase.svg";
+import figmaLogo from "./assets/figma.svg";
+import githubLogo from "./assets/github.svg";
+import reactLogo from "./assets/react.svg";
 
 // --- Data Structures for Michael Olorundare's Portfolio ---
 
@@ -102,12 +108,41 @@ const experienceData = [
 ];
 
 const aboutSkills = [
-  "📱 Flutter & Dart",
-  "🔁 Riverpod",
-  "🧩 Clean Architecture",
-  "☁️ REST APIs · Firebase",
-  "🎨 Figma → Flutter UI",
-  "⚙️ Git · GitHub · CI/CD",
+  {
+    name: "Flutter",
+    icon: <img src={flutterLogo} alt="Flutter" className="w-5 h-5" />,
+  },
+  { name: "Dart", icon: <img src={dartLogo} alt="Dart" className="w-5 h-5" /> },
+
+  {
+    name: "Clean Architecture",
+    icon: (
+      <svg
+        className="w-5 h-5 text-[#0F172A]"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden
+      >
+        <path
+          d="M3 6h18v3H3V6zM3 11h18v3H3v-3zM3 16h18v3H3v-3z"
+          fill="currentColor"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "REST APIs · Firebase",
+    icon: <img src={firebaseLogo} alt="Firebase" className="w-5 h-5" />,
+  },
+  {
+    name: "Figma → Flutter UI",
+    icon: <img src={figmaLogo} alt="Figma" className="w-5 h-5" />,
+  },
+  {
+    name: "Git · GitHub · CI/CD",
+    icon: <img src={githubLogo} alt="GitHub" className="w-5 h-5" />,
+  },
 ];
 
 // --- Reusable Components ---
@@ -388,10 +423,13 @@ const AboutSection = ({ details, skills }) => (
       <div className="flex flex-wrap gap-4">
         {skills.map((skill) => (
           <div
-            key={skill}
-            className="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800"
+            key={skill.name}
+            className="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800"
           >
-            <span className="text-sm font-medium">{skill}</span>
+            <div className="flex items-center justify-center w-8 h-8 rounded-md bg-gray-100 dark:bg-gray-800/60 text-sm text-[#0f172a]">
+              {skill.icon}
+            </div>
+            <span className="text-sm font-medium">{skill.name}</span>
           </div>
         ))}
       </div>
